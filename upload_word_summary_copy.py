@@ -44,6 +44,26 @@ if key is not None:
 
 
         if uploaded_file is not None:
+            st.subheader("Questions")
+            question = st.text_input("Ask a question about the text.")
+            if question:
+                # Use openai gpt to answer the user's question
+                answer = openai.Completion.create(
+                    engine="text-davinci-003",
+                    # engine = "text-curie-001",
+                    prompt=f"In the following text, {question}\n. Answer briefly, in bullet points, citing where in the text you found the answer: {document}",
+                    temperature=0.5,
+                    max_tokens=1500, 
+                    # n=1
+                )
+                answer = answer["choices"][0]["text"]
+                answer = answer.replace("•", "\n•")
+                st.write(answer)
+
+            st.subheader("Summary section (optional)*")
+            st.write("If your document is a case, you may click the below button to summarise the uploaded document. If it is not a case, this function may not work as expected")
+            
+            
             choose_numWords = st.number_input("How many words do you want in your summary?")
             choose_numWords = round(choose_numWords)
             if st.button("Click to Summarise"):
@@ -58,20 +78,4 @@ if key is not None:
                 summary = summary.replace("•", "\n•")
                 st.write(summary)
         
-            question = st.text_input("Ask a question about the text.")
-
-
-            if question:
-                # Use openai gpt to answer the user's question
-                answer = openai.Completion.create(
-                    engine="text-davinci-003",
-                    # engine = "text-curie-001",
-                    prompt=f"In the following text, {question}\n. Answer briefly, in bullet points, citing where in the text you found the answer: {document}",
-                    temperature=0.5,
-                    max_tokens=1500, 
-                    # n=1
-                )
-                answer = answer["choices"][0]["text"]
-                answer = answer.replace("•", "\n•")
-                st.write(answer)
-            print(type(document))
+            
