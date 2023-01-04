@@ -15,7 +15,7 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-key = st.sidebar.text_input("Free trial - Please enter the account access phrase sent to you over email", type="password")
+key = st.sidebar.text_input("Free trial - Please enter your account access phrase.", type="password")
 
 image = Image.open('PICTURES/output-onlinepngtools1.png')
 
