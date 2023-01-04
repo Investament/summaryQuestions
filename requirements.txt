@@ -1,0 +1,5 @@
+openai==0.25.0
+pandas==1.4.4
+Pillow==9.4.0
+streamlit==1.12.2
+textract==1.6.5
