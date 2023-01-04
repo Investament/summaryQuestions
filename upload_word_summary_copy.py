@@ -22,7 +22,7 @@ image = Image.open('PICTURES/output-onlinepngtools1.png')
 st.image(image,output_format='PNG', width=100)
 openai.api_key = key
 if key is not None:
-    uploaded_file = st.file_uploader("Choose a file to upload - limit approximately 1,300 words")
+    uploaded_file = st.file_uploader("Choose a file to upload. Documents over 1,000 words may fail to summarise or answer questions. Please contact bseota@gmail.com for an account upgrade.")
 
     if uploaded_file:
         file = tempfile.NamedTemporaryFile(delete=False)
