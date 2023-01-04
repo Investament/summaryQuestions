@@ -22,8 +22,9 @@ image = Image.open('PICTURES/output-onlinepngtools1.png')
 st.image(image,output_format='PNG', width=100)
 openai.api_key = key
 if key is not None:
+    st.write("This version only supports .docx and .rtf files")
     uploaded_file = st.file_uploader("Choose a file to upload. Documents over 1,000 words may fail to summarise or answer questions. Please contact bseota@gmail.com for an account upgrade.")
-
+    
     if uploaded_file:
         file = tempfile.NamedTemporaryFile(delete=False)
         file_path = file.name
