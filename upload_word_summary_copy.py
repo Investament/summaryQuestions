@@ -49,8 +49,8 @@ if key is not None:
             if st.button("Click to Summarise"):
                 summary = openai.Completion.create(
                     engine="text-davinci-003",
-                    prompt=f"Write a summary and key findings of the following text under the headings 'SUMMARY' and 'KEY FINDINGS'. The 'SUMMARY' and 'KEY FINDINGS' sections should total {choose_numWords} words. Include only 'SUMMARY' and 'KEY FINDINGS'. Write briefly, formally, and in bullet points. \n\n {document}",
-                    temperature=0.9,
+                    prompt=f"Write a summary and key findings of the following text under the headings 'SUMMARY', 'KEY FINDINGS', and 'KEY DATES AND EVENTS'. These three sections should total {choose_numWords} words. Write briefly, formally, and in bullet points. \n\n {document}",
+                    temperature=0.5,
                     max_tokens=1100,
                 
                 )
@@ -67,7 +67,7 @@ if key is not None:
                     engine="text-davinci-003",
                     # engine = "text-curie-001",
                     prompt=f"In the following text, {question}\n. Answer briefly, in bullet points, citing where in the text you found the answer: {document}",
-                    temperature=0.,
+                    temperature=0.5,
                     max_tokens=1500, 
                     # n=1
                 )
